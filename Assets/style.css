@@ -46,6 +46,11 @@
      margin: 16px 0;
  }
 
+ .card p {
+    text-align: justify;
+    text-justify: inter-word;
+ }
+
  .counter {
      font-weight: bold;
  }
