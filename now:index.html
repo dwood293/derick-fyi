@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>derick.fyi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪵</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+  <div class="container">
+    <header>
+      <div class="buttons">
+        <a href="/home/">home</a>
+        <a href="/now/">now</a>
+        <a href="/posts/">posts</a>
+        <a href="/projects/">projects</a>
+        <a href="/more/">more</a>
+      </div>
+    </header>
+
+    <section id="now" class="card">
+      <h1>So, what am I up to right now?</h1>
+      <hr class="hr" />
+      <p>Right now, I'm learning HTML / CSS to build this website. That's right! No wordpress, squarespace, or any other
+        'easy way' for me.</p>
+        <p>Why? Two reasons.</p> 
+        <p>1. It's antiquated, less convenient, and less practical. You'll notice a similar theme throughout my
+        many interests.
+        There's a certain minimum suffering I must endure. For me, joy comes from learning, doing and creating.</p>
+        <p>The world will always try to sell you a solution - don't fall for it.</p>
+      <p>2. The internet has become an odious, vile and depressing place. The
+        algorithms have me down, and I'm losing all interest
+        in social media beyond my professional obligations. Furthermore, as
+        a marketer, I'm deeply disturbed by the latest trends in web development (and other negative externalities of
+        capitalism, which will be a future
+        blog post). They are slow, bulky, and unecessary. HTML (with light CSS for visual clarity), on the other hand, is lightning fast, lightweight, and still the gold
+        standard. 
+        <p>Did you notice how fast this site loaded?</p>
+      </p>
+      <h2> What else?</h2>
+      <hr class="hr1" />
+      <p>As you may know, my wife and I got officially married on October 25, 2025. Hooray!</p>
+      <p>But that's not why you're here.</p>
+      <p>You're here to learn about my hobbies.</p>
+      <p>Right now, these are golfing, web development (hi), and home improvement. There are many other varied interests
+        and projects
+        I'm working on, however. See projects for more. </p>
+    </section>
+
+    <footer>
+      <nav class="footer-nav">
+        <a href="/home/">Home</a>
+        <a href="/now/">Now</a>
+        <a href="/posts/">Posts</a>
+        <a href="/projects/">Projects</a>
+        <a href="/recipes/">Recipes</a>
+        <a href="mailto:hi@derick.fyi?subject=hi%20derick">Email Me</a>
+      </nav>
+      <p class="meta">
+        No ads. No tracking. No cookies. Ever.
+      </p>
+      <p>© <span id="year"></span> Derick Wood</p>
+      <footer class="site-footer">
+      </footer>
+
+    </footer>
+  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
