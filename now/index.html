@@ -89,9 +89,9 @@
     const diffDays = Math.round((today - updated) / MS_PER_DAY);
 
     let message = 'Updated ';
-
+    // Display message
     if (diffDays <= 0) {
-      message += 'today';                              // ✅ no "ago"
+      message += 'today';
     } else if (diffDays === 1) {
       message += 'yesterday';
     } else {
