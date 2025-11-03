@@ -1,5 +1,5 @@
  body {
-     font-family: "Andale Mono", "Courier New", Courier, monospace;
+     font-family: "Georgia", "Times New Roman", serif;
      background: #f7f7f7;
      color: #111;
      margin: 0;
@@ -47,8 +47,8 @@
  }
 
  .card p {
-    text-align: justify;
-    text-justify: inter-word;
+     text-align: justify;
+     text-justify: inter-word;
  }
 
  .counter {
@@ -70,6 +70,7 @@
      color: #000;
      background: #ff0;
      box-shadow: 3px 3px 0 #000;
+     font-family: "Andale Mono", "Courier New", Courier, monospace;
  }
 
  .buttons a:active {
