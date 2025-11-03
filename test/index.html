@@ -1,0 +1,91 @@
+<section class="subscribe">
+  <h2>get an email when i post</h2>
+  <p>no robots or tracking. i will physically send each and every email.</p>
+
+  <form id="subForm"
+    action="https://script.google.com/macros/s/AKfycbzvCgnr6jjXsrQ0q4mKgjYMHn3c-4LJ5f_0rdAK8216M5ASm9lPbjZVhNmxFjDGjrh9gQ/exec"
+    method="POST">
+    <!-- real fields -->
+    <label for="name">name (optional)</label>
+    <input type="text" id="name" name="name" placeholder="derick">
+
+    <label for="email">email</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+    <!-- honeypot (hide with CSS) -->
+    <input type="text" name="hp" tabindex="-1" autocomplete="off" class="hp">
+
+    <!-- context (sent to sheet) -->
+    <input type="hidden" name="ua" value="">
+    <input type="hidden" name="ip" value="">
+    <input type="hidden" name="notes" value="site subscribe">
+
+    <button type="submit">notify me</button>
+    <span id="subMsg" class="msg" aria-live="polite"></span>
+  </form>
+</section>
+
+<script>
+  // fill UA; IP is optional (usually blank behind Apps Script)
+  document.querySelector('input[name="ua"]').value = navigator.userAgent;
+
+  const f = document.getElementById('subForm');
+  const msg = document.getElementById('subMsg');
+
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.textContent = "sending…";
+    const data = new FormData(f);
+    try {
+      // Apps Script web apps don't set CORS headers; no-cors avoids console errors
+      await fetch(f.action, { method: 'POST', body: data, mode: 'no-cors' });
+      f.reset();
+      msg.textContent = "thanks — i’ll email you when i write.";
+    } catch {
+      msg.textContent = "hmm, didn’t go through. try again?";
+    }
+  });
+</script>
+
+<style>
+  .subscribe {
+    max-width: 520px;
+    margin: 2rem auto;
+  }
+
+  .subscribe label {
+    display: block;
+    margin: .75rem 0 .25rem;
+    font-weight: 600;
+  }
+
+  .subscribe input,
+  .subscribe button {
+    width: 100%;
+    padding: .6rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+
+  .subscribe button {
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    margin-top: .75rem;
+  }
+
+  .subscribe button:hover {
+    background: #222;
+  }
+
+  .subscribe .hp {
+    display: none !important;
+  }
+
+  .subscribe .msg {
+    display: block;
+    margin-top: .5rem;
+    font-size: .9rem;
+    color: #555;
+  }
+</style>
