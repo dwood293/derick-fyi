@@ -27,6 +27,8 @@
       <h1>What I'm doing now</h1>
       <hr class="hr" />
       <p><strong>Here's what I'd say if you asked me what I'm up to.</strong></p>
+      <p id="last-updated">Updated</p>
+
       <h2>Programming</h2>
       <p>I'm learning HTML / CSS to build this website. I like a challenge; and this is (nearly) free.</p>
       <p><strong>But why?</strong> Three reasons:</p>
@@ -69,9 +71,42 @@
 
     </footer>
   </div>
+
+  <p id="last-updated">Updated…</p>
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const LAST_UPDATED_STR = '2025-11-02'; // YYYY-MM-DD
+
+    const [y, m, d] = LAST_UPDATED_STR.split('-').map(Number);
+    const updated = new Date(y, m - 1, d);
+
+    // Today's local date at midnight
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Diff in whole calendar days (local)
+    const MS_PER_DAY = 24 * 60 * 60 * 1000;
+    const diffDays = Math.round((today - updated) / MS_PER_DAY);
+
+    let message = 'Updated ';
+
+    if (diffDays <= 0) {
+      message += 'today';                              // ✅ no "ago"
+    } else if (diffDays === 1) {
+      message += 'yesterday';
+    } else {
+      const months = Math.floor(diffDays / 30);
+      const weeks = Math.floor((diffDays % 30) / 7);
+      const parts = [];
+      if (months > 0) parts.push(`${months} month${months > 1 ? 's' : ''}`);
+      if (weeks > 0) parts.push(`${weeks} week${weeks > 1 ? 's' : ''}`);
+      if (parts.length === 0) parts.push(`${diffDays} day${diffDays > 1 ? 's' : ''}`);
+      message += parts.join(', ') + ' ago';
+    }
+
+    document.getElementById('last-updated').textContent = message;
   </script>
+
 </body>
 
 </html>
